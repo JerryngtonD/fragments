@@ -1,4 +1,6 @@
 package ru.otus.fragments.recyclerTwo
 
-class NewsItem {
-}
+data class NewsItem(
+    val id: Int,
+    val title: String
+)
