@@ -7,7 +7,8 @@ import ru.otus.fragments.R
 
 class NewsAdapter(
     private val layoutInflater: LayoutInflater,
-    private val items: List<NewsItem>
+    private val items: List<NewsItem>,
+    private val listener: ((newsItem: NewsItem) -> Unit)
 ): RecyclerView.Adapter<NewsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
        return NewsViewHolder(layoutInflater.inflate(R.layout.item_news, parent, false))
@@ -19,6 +20,7 @@ class NewsAdapter(
         holder.bind(items[position])
 
         holder.itemView.setOnClickListener{
+            listener(items[position])
         }
     }
 }

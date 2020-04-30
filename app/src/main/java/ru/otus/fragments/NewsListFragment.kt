@@ -16,6 +16,8 @@ class NewsListFragment : Fragment() {
         const val TAG = "NewsListFragment"
     }
 
+    var listener: NewsListListener? = null
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(TAG, "onAttach")
@@ -53,6 +55,13 @@ class NewsListFragment : Fragment() {
             NewsItem(2, "News 2"),
             NewsItem(3, "News 3"),
             NewsItem(4, "News 4")
-        ))
+        )
+        ) {
+            listener?.onNewsSelected(it)
+        }
+    }
+
+    interface NewsListListener {
+        fun onNewsSelected(newsItem: NewsItem)
     }
 }
